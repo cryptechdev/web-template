@@ -1,8 +1,10 @@
+/**
+ * This file is to be used as reference for the Keplr integration.
+ */
 import { useState, useEffect, MouseEvent } from "react";
 import type { NextPage } from "next";
 import { StdFee, Coin } from "@cosmjs/amino";
 
-import WalletLoader from "components/WalletLoader";
 import { useSigningClient } from "contexts/cosmwasm";
 import {
   convertMicroDenomToDenom,
@@ -11,7 +13,7 @@ import {
 } from "util/conversion";
 
 const PUBLIC_CHAIN_NAME = process.env.NEXT_PUBLIC_CHAIN_NAME;
-const PUBLIC_STAKING_DENOM = process.env.NEXT_PUBLIC_STAKING_DENOM || "ujuno";
+const PUBLIC_STAKING_DENOM = process.env.NEXT_PUBLIC_STAKING_DENOM || "";
 
 const Send: NextPage = () => {
   const { walletAddress, signingClient } = useSigningClient();
@@ -77,7 +79,7 @@ const Send: NextPage = () => {
       });
   };
   return (
-    <WalletLoader loading={loading}>
+    <>
       <p className="text-2xl">Your wallet has {balance}</p>
 
       <h1 className="text-5xl font-bold my-8">
@@ -157,7 +159,7 @@ const Send: NextPage = () => {
           </div>
         )}
       </div>
-    </WalletLoader>
+    </>
   );
 };
 

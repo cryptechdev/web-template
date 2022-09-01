@@ -21,7 +21,7 @@ export const useSigningCosmWasmClient = (): ISigningCosmWasmClientContext => {
   const [signingClient, setSigningClient] =
     useState<SigningCosmWasmClient | null>(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<any>(null);
 
   const connectWallet = async () => {
     setLoading(true);
