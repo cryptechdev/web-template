@@ -4,7 +4,10 @@ import ThemeToggle from "components/ThemeToggle";
 import MainMenu from "./MainMenu";
 
 function Nav() {
-  const PUBLIC_SITE_ICON_URL = process.env.NEXT_PUBLIC_SITE_ICON_URL || "";
+  const PUBLIC_SITE_ICON_URL =
+    process.env.NEXT_PUBLIC_SITE_ICON_URL || "/site_logo.svg";
+  const PUBLIC_SITE_TITLE =
+    process.env.NEXT_PUBLIC_SITE_TITLE || "Web Template";
 
   return (
     <div className="border-b w-screen px-2 md:px-16">
@@ -20,9 +23,7 @@ function Nav() {
                   alt="Logo"
                 />
               ) : (
-                <span className="text-2xl">
-                  {process.env.NEXT_PUBLIC_SITE_TITLE}
-                </span>
+                <span className="text-2xl">{PUBLIC_SITE_TITLE}</span>
               )}
             </a>
           </Link>

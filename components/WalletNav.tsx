@@ -28,7 +28,10 @@ function WalletNav() {
     };
   }, [reconnect]);
 
-  const PUBLIC_SITE_ICON_URL = process.env.NEXT_PUBLIC_SITE_ICON_URL || "";
+  const PUBLIC_SITE_ICON_URL =
+    process.env.NEXT_PUBLIC_SITE_ICON_URL || "/site_logo.svg";
+  const PUBLIC_SITE_TITLE =
+    process.env.NEXT_PUBLIC_SITE_TITLE || "Web Template";
 
   return (
     <div className="border-b w-screen px-2 md:px-16">
@@ -44,13 +47,8 @@ function WalletNav() {
                   alt="Logo"
                 />
               ) : (
-                <span className="text-2xl">⚛️ </span>
+                <span className="text-2xl">{PUBLIC_SITE_TITLE}</span>
               )}
-            </a>
-          </Link>
-          <Link href="/">
-            <a className="ml-1 md:ml-2 link link-hover font-semibold text-xl md:text-2xl align-top">
-              {process.env.NEXT_PUBLIC_SITE_TITLE}
             </a>
           </Link>
           <MainMenu />
