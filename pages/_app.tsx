@@ -10,11 +10,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       {/* 
       If you need Wallet access, wrap your app in the SigningCosmWasmProvider to provide context
     */}
-      <SigningCosmWasmProvider>
+      {/* <SigningCosmWasmProvider> */}
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </SigningCosmWasmProvider>
+      {/* </SigningCosmWasmProvider> */}
     </>
   );
 }

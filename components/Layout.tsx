@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 import Head from "next/head";
 import Nav from "./Nav";
 import Footer from "./Footer";
-import WalletNav from "./WalletNav";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -39,7 +38,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         Otherwise, load the <Nav /> component here.
       */}
 
-      <WalletNav />
+      <Nav />
       <main className="flex flex-col items-center justify-center w-full flex-1 p-2 md:px-20 text-center">
         {children}
       </main>
