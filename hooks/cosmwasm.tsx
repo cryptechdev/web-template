@@ -12,7 +12,7 @@ export interface ISigningCosmWasmClientContext {
   signingClient: SigningCosmWasmClient | null;
   loading: boolean;
   error: any;
-  connectWallet: any;
+  connectWallet: () => Promise<boolean>;
   disconnect: Function;
 }
 
@@ -23,7 +23,8 @@ export const useSigningCosmWasmClient = (): ISigningCosmWasmClientContext => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<any>(null);
 
-  const connectWallet = async () => {
+  const connectWallet = async (): Promise<boolean> => {
+    if (walletAddress.length > 0) return true;
     setLoading(true);
 
     try {
@@ -54,8 +55,10 @@ export const useSigningCosmWasmClient = (): ISigningCosmWasmClientContext => {
       setWalletAddress(address);
 
       setLoading(false);
+      return true;
     } catch (error) {
       setError(error);
+      return false;
     }
   };
 

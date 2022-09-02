@@ -11,7 +11,7 @@ let { Provider } = (CosmWasmContext =
     signingClient: null,
     loading: false,
     error: null,
-    connectWallet: () => {},
+    connectWallet: async () => false,
     disconnect: () => {},
   }));
 
