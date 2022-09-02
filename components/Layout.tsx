@@ -1,7 +1,9 @@
 import { ReactNode } from "react";
 import Head from "next/head";
 import Nav from "./Nav";
+import WalletNav from "./WalletNav";
 import Footer from "./Footer";
+const USE_WALLET = process.env.NEXT_PUBLIC_USE_WALLET === "true";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -33,12 +35,8 @@ export default function Layout({ children }: { children: ReactNode }) {
         <link rel="manifest" href="/site.webmanifest"></link>
       </Head>
 
-      {/* 
-        For Keplr wallet integration, load the <WalletNav /> component here.
-        Otherwise, load the <Nav /> component here.
-      */}
+      {USE_WALLET ? <WalletNav /> : <Nav />}
 
-      <Nav />
       <main className="flex flex-col items-center justify-center w-full flex-1 p-2 md:px-20 text-center">
         {children}
       </main>
