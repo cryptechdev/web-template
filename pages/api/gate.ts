@@ -6,7 +6,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(405).json({ error: "Method not allowed" });
     return;
   }
-  console.log("req.body", req.body, PASSWORD);
 
   if (PASSWORD.length === 0) {
     res.status(200).json("ok");

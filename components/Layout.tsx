@@ -1,9 +1,11 @@
 import { ReactNode } from "react";
 import Head from "next/head";
 import Nav from "./Nav";
-import WalletNav from "./WalletNav";
 import Footer from "./Footer";
+import TerraWalletNav from "./TerraWalletNav";
+import KeplrWalletNav from "./KeplrWalletNav";
 const USE_WALLET = process.env.NEXT_PUBLIC_USE_WALLET === "true";
+const WALLET = process.env.NEXT_PUBLIC_WALLET || "keplr";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -35,7 +37,15 @@ export default function Layout({ children }: { children: ReactNode }) {
         <link rel="manifest" href="/site.webmanifest"></link>
       </Head>
 
-      {USE_WALLET ? <WalletNav /> : <Nav />}
+      {USE_WALLET ? (
+        WALLET === "keplr" ? (
+          <KeplrWalletNav />
+        ) : (
+          <TerraWalletNav />
+        )
+      ) : (
+        <Nav />
+      )}
 
       <main className="flex flex-col items-center justify-center w-full flex-1 p-2 md:px-20 text-center">
         {children}

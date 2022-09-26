@@ -1,32 +1,24 @@
-import { useSigningClient } from "contexts/cosmwasm";
 import Link from "next/link";
 import Image from "next/image";
 import ThemeToggle from "components/ThemeToggle";
-import { useEffect, useCallback } from "react";
 import MainMenu from "./MainMenu";
 
-function WalletNav() {
-  const { walletAddress, connectWallet, disconnect } = useSigningClient();
+function WalletNav({
+  walletAddress,
+  connect,
+  disconnect,
+}: {
+  walletAddress: string;
+  connect: Function;
+  disconnect: Function;
+}) {
   const handleConnect = () => {
     if (walletAddress.length === 0) {
-      connectWallet();
+      connect();
     } else {
       disconnect();
     }
   };
-
-  const reconnect = useCallback(() => {
-    disconnect();
-    connectWallet();
-  }, [disconnect, connectWallet]);
-
-  useEffect(() => {
-    window.addEventListener("keplr_keystorechange", reconnect);
-
-    return () => {
-      window.removeEventListener("keplr_keystorechange", reconnect);
-    };
-  }, [reconnect]);
 
   const PUBLIC_SITE_ICON_URL =
     process.env.NEXT_PUBLIC_SITE_ICON_URL || "/site_logo.svg";

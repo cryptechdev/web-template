@@ -17,7 +17,13 @@ cp .env.example .env.local
 
 If your new project doesn't intend to use a wallet, the only environment variables you need to set are ` NEXT_PUBLIC_SITE_TITLE` and `NEXT_PUBLIC_SITE_ICON_URL`.
 
-If you want Keplr Wallet integration, set the `NEXT_PUBLIC_USE_WALLET` to `true`.
+If you want a Wallet integration, set the `NEXT_PUBLIC_USE_WALLET` to `true`.
+
+By default, Keplr will be used. This can be modified by setting the `NEXT_PUBLIC_WALLET` env to the desired wallet.  
+Currently supported wallets:
+
+- `keplr`
+- `terra`
 
 Then, run the development server:
 
