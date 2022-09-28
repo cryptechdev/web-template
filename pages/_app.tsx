@@ -17,7 +17,7 @@ const WALLET = process.env.NEXT_PUBLIC_WALLET || "keplr";
 
 const queryClient = new QueryClient();
 
-if (typeof window !== "undefined") {
+if (process.env.NODE_ENV === "production" && typeof window !== "undefined") {
   disableReactDevTools();
 }
 
