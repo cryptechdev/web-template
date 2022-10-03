@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import ThemeToggle from "components/ThemeToggle";
 import MainMenu from "./MainMenu";
+import { Button } from "@mui/material";
+import { formatWalletAddress } from "util/conversion";
 
 function WalletNav({
   walletAddress,
@@ -47,12 +49,11 @@ function WalletNav({
         </div>
         <ThemeToggle />
         <div className="flex flex-grow lg:flex-grow-0 max-w-full">
-          <button
-            className="block btn btn-outline btn-primary w-full max-w-full truncate"
-            onClick={handleConnect}
-          >
-            {walletAddress || "Connect Wallet"}
-          </button>
+          <Button variant="outlined" onClick={handleConnect}>
+            {walletAddress.length > 0
+              ? formatWalletAddress(walletAddress)
+              : "Connect Wallet"}
+          </Button>
         </div>
       </nav>
     </div>

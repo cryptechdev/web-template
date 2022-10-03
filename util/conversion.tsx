@@ -36,3 +36,7 @@ export const zeroStakingCoin = {
   amount: "0",
   denom: process.env.NEXT_PUBLIC_STAKING_DENOM || "",
 };
+
+export const formatWalletAddress = (address: string) => {
+  return `${address.slice(0, address.indexOf("1"))}...${address.slice(-4)}`;
+};
