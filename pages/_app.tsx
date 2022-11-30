@@ -1,7 +1,7 @@
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 import "styles/globals.css";
 import "styles/fontawesome/css/all.min.css";
 import type { AppProps } from "next/app";
@@ -16,6 +16,7 @@ import {
   WalletControllerChainOptions,
   WalletProvider,
 } from "@terra-money/wallet-provider";
+import { RecoilRoot } from "recoil";
 const USE_WALLET = process.env.NEXT_PUBLIC_USE_WALLET === "true";
 const WALLET = process.env.NEXT_PUBLIC_WALLET || "keplr";
 
@@ -32,11 +33,13 @@ function MyApp({
   walletConnectChainIds,
 }: AppProps & WalletControllerChainOptions) {
   const appContent = (
-    <QueryClientProvider client={queryClient}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </QueryClientProvider>
+    <RecoilRoot>
+      <QueryClientProvider client={queryClient}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </QueryClientProvider>
+    </RecoilRoot>
   );
 
   let app = appContent;
